@@ -1,22 +1,20 @@
 package com.scm.helpers;
 
-import java.security.Principal;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 
-import lombok.experimental.var;
 
 public class Helper {
 
 	public static String getEmailOfLoggedInUser(Authentication authentication) {
 		
 		if(authentication instanceof OAuth2AuthenticationToken) {
-			
-			var oauth2AuthenticationToken =(OAuth2AuthenticationToken) authentication;
-			var clientRegistrationId = oauth2AuthenticationToken.getAuthorizedClientRegistrationId();
-			var oauth2User=(DefaultOAuth2User)authentication.getPrincipal();
+
+			OAuth2AuthenticationToken oauth2AuthenticationToken =(OAuth2AuthenticationToken) authentication;
+			String clientRegistrationId = oauth2AuthenticationToken.getAuthorizedClientRegistrationId();
+			DefaultOAuth2User  oauth2User=(DefaultOAuth2User)authentication.getPrincipal();
 			String username="";
 			
 			if(clientRegistrationId.equalsIgnoreCase("google")) {

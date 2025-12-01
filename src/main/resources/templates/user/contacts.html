@@ -1,6 +1,6 @@
 <!doctype html>
-<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}" xmlns:th="http://www.thymeleaf.org">
-     <!-- This html will be replace by parent fragment in base.html -->
+<html lang="en" data-th-replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}"  xmlns:th="http://www.thymeleaf.org">
+     <!-- This html will be replaced by parent fragment in base.html -->
      
      <head>
           <title>View Contact Page</title>
@@ -37,7 +37,7 @@
 							                    </select>
 							                  </div>
 	                                        <!-- Search Bar -->
-	                                        <label for="table-search" class="sr-only">Search</label>
+	                                        <label class="sr-only">Search</label>
 	                                        <div class="relative">
 	                                             <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
 	                                                  <svg
@@ -147,16 +147,20 @@
                                                   </td>
 
                                                   <!-- ACTION BUTTONS -->
+                                                  <!--  Edit Button-->
                                                   <td class="px-6 py-4">
-                                                       <a href="#" target="_blank">
+                                                       <button>
                                                             <i class="w-6 h-6 fa-regular fa-pen-to-square"></i>
-                                                       </a>
-                                                       <a href="#" target="_blank">
+                                                       </button>
+                                                  <!--  View Button-->
+                                                       <button 
+                                                           th:onclick="loadContactdata([[${c.id}]])">
                                                             <i class="w-6 h-6 fa-regular fa-eye"></i>
-                                                       </a>
-                                                       <a href="#" target="_blank">
+                                                       </button>
+                                                  <!--  Delete Button-->
+                                                       <button >
                                                             <i class="w-6 h-6 fa-solid fa-trash"></i>
-                                                       </a>
+                                                       </button>
                                                   </td>
                                              </tr>
                                         </tbody>
@@ -172,7 +176,6 @@
                                              <label for="pageSize" class="text-sm text-gray-600 dark:text-gray-300"
                                                   >Contacts per page</label
                                              >
-
                                              <select
                                                   id="pageSize"
                                                   class="p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
@@ -185,7 +188,9 @@
                                                   <option th:value="50" th:selected="${pageSize == 50}">50</option>
                                              </select>
                                         </div>
+                                       
 
+                                       <!--Page Navigation bar-->
                                         <nav aria-label="Page navigation example">
                                              <ul class="inline-flex -space-x-px text-base h-10">
                                                   <li th:unless="${pageContact.first}">
@@ -228,16 +233,18 @@
 						           </h1>
                               </div>
                          </div>
+                         <div data-th-replace="~{user/contact_modals :: contact}"></div>
                     </div>
-						           <div th:replace="~{user/contact_modals :: contact}"></div>
-                    
                </div>
-\          </div>
+
+
+          </div>
+          <script data-th-src="@{'/js/contacts.js'}"></script>
           <script>
+               console.log("Profile page script..");
                function changePageSize(size) {
                     window.location.href = `/user/contacts?size=${size}&page=0`;
                }
-               console.log("Profile page script..");
           </script>
      </body>
 </html>

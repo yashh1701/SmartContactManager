@@ -31,9 +31,7 @@ import com.scm.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-;
 
 @Controller
 @RequestMapping("/user/contacts")

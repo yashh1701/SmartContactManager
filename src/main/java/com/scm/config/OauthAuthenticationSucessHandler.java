@@ -23,8 +23,6 @@ import com.scm.repositories.UserRepo;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.constraints.Null;
-import lombok.experimental.var;
 
 @Component
 public class OauthAuthenticationSucessHandler implements AuthenticationSuccessHandler {
@@ -45,7 +43,7 @@ public class OauthAuthenticationSucessHandler implements AuthenticationSuccessHa
 		 logger.info(authorizedClientRegistrationId);  // printing provider on console
 		 
 		 // Printing provider on console
-		 var oauthUser = (DefaultOAuth2User) authentication.getPrincipal();
+		DefaultOAuth2User  oauthUser = (DefaultOAuth2User) authentication.getPrincipal();
 		 oauthUser.getAttributes().forEach((key,value)->{
 			 logger.info(key + " : "  + value);
 		 });
