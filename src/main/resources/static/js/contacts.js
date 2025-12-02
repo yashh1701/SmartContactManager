@@ -44,22 +44,26 @@ async function loadContactdata(id) {
     console.log(data);
     document.querySelector("#contact_name").innerHTML = data.name;
     document.querySelector("#contact_email").innerHTML = data.email;
-//    document.querySelector("#contact_image").src = data.picture;
-//    document.querySelector("#contact_address").innerHTML = data.address;
-//    document.querySelector("#contact_phone").innerHTML = data.phoneNumber;
-//    document.querySelector("#contact_about").innerHTML = data.description;
-//    const contactFavorite = document.querySelector("#contact_favorite");
-//    if (data.favorite) {
-//      contactFavorite.innerHTML =
-//        "<i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i>";
-//    } else {
-//      contactFavorite.innerHTML = "Not Favorite Contact";
-//    }
-//
-//    document.querySelector("#contact_website").href = data.websiteLink;
-//    document.querySelector("#contact_website").innerHTML = data.websiteLink;
-//    document.querySelector("#contact_linkedIn").href = data.linkedInLink;
-//    document.querySelector("#contact_linkedIn").innerHTML = data.linkedInLink;
+    document.querySelector("#contact_image").src = data.picture;
+    document.querySelector("#contact_address").innerHTML = data.address;
+    document.querySelector("#contact_phone").innerHTML = data.phoneNumber;
+    document.querySelector("#contact_about").innerHTML = data.description;
+	const fav = document.querySelector("#contact_favorite");
+	const notFav = document.querySelector("#contact_not_favorite");
+
+	if (data.favourite) {
+	    fav.classList.remove("hidden");
+	    notFav.classList.add("hidden");
+	} else {
+	    notFav.classList.remove("hidden");
+	    fav.classList.add("hidden");
+	}
+
+
+    document.querySelector("#contact_website").href = data.websiteLink;
+    document.querySelector("#contact_website").innerHTML = data.websiteLink;
+    document.querySelector("#contact_linkedIn").href = data.linkedInLink;
+    document.querySelector("#contact_linkedIn").innerHTML = data.linkedInLink;
     openContactModal();
   } catch (error) {
     console.log("Error: ", error);
