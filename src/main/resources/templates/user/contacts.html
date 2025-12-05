@@ -154,11 +154,14 @@
                                                             <i class="w-6 h-6 fa-regular fa-eye"></i>
                                                        </button>
                                                   <!--  Edit Button-->
-                                                       <button>
+                                                       <a data-th-href="@{'/user/contacts/view/' + *{id}}" >
                                                             <i class="w-6 h-6 fa-regular fa-pen-to-square"></i>
-                                                       </button>
+                                                       </a>
                                                   <!--  Delete Button-->
-                                                       <button >
+                                                      <!--  <a data-th-href="@{'/user/contacts/delete/'+${c.id}}">
+                                                            <i class="w-6 h-6 fa-solid fa-trash"></i>
+                                                       </a> -->
+                                                        <button  th:onclick="deleteContact([[${c.id}]])">
                                                             <i class="w-6 h-6 fa-solid fa-trash"></i>
                                                        </button>
                                                   </td>

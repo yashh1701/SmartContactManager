@@ -11,7 +11,8 @@
 	
 	<!-- <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" /> -->
 		
-	<link rel="stylesheet" th:href="@{'/css/output.css'}">
+	<link rel="stylesheet" href="/css/custom.css">  <!-- THIS ONE LAST -->
+	<link rel="stylesheet" th:href="@{'/css/output.css'}">   <!--  Delete button pop-up css -->
 	
 	<!-- Font Awesome link -->
 	<link rel="stylesheet"
@@ -40,6 +41,7 @@
 		
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.1/flowbite.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script data-th-src="@{'/js/script.js'}"></script>
 	<th:block data-th-replace="${script}"></th:block>
 </body>

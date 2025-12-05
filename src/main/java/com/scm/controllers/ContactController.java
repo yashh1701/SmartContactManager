@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,6 +58,7 @@ public class ContactController {
 		return "user/add_contact";
 	}
 	
+//	save contact
 	@PostMapping("/add")
 	public String saveContact(@Valid @ModelAttribute("contactform") ContactForm contactform, BindingResult bindlingResult,Authentication authentication, HttpSession session) {
 		
@@ -116,8 +118,7 @@ public class ContactController {
 		return "redirect:/user/contacts/add";
 	}
 	
-	//View Contacts
-	
+//	View Contacts
 	@GetMapping
 	public String viewContacts(
 		 @RequestParam(value = "page", defaultValue = "0") int page,
@@ -140,7 +141,6 @@ public class ContactController {
 		
 		return "user/contacts";
 	}
-	
 	
 //	 Search handler
 	@GetMapping("/search")
@@ -175,6 +175,45 @@ public class ContactController {
 		return "/user/search";
 	}
 	
-	
+//	 detete contact
+    @RequestMapping("/delete/{contactId}")
+    public String deleteContact(@PathVariable("contactId") String contactId,HttpSession session) {
+    	
+        contactService.delete(contactId);
+        logger.info("contactId {} deleted", contactId);
+
+        session.setAttribute("message",Message
+        		        .builder()
+                        .content("Contact is Deleted successfully !! ")
+                        .type(MessageType.green)
+                        .build()
+        );
+
+        return "redirect:/user/contacts";
+    }
+    
+//    update contact form view
+    @GetMapping("/view/{contactId}")
+    public String updateContactFormView(
+            @PathVariable("contactId") String contactId,
+            Model model) {
+
+        var contact = contactService.getById(contactId);
+        ContactForm contactForm = new ContactForm();
+        contactForm.setName(contact.getName());
+        contactForm.setEmail(contact.getEmail());
+        contactForm.setPhoneNumber(contact.getPhoneNumber());
+        contactForm.setAddress(contact.getAddress());
+        contactForm.setDescription(contact.getDescription());
+        contactForm.setFavourite(contact.isFavourite());
+        contactForm.setWebsiteLink(contact.getWebsiteLink());
+        contactForm.setLinkedinLink(contact.getLinkedinLink());
+        contactForm.setPicture(contact.getPicture());
+        ;
+        model.addAttribute("contactForm", contactForm);
+        model.addAttribute("contactId", contactId);
+
+        return "user/update_contact_view";
+    }
 
 }

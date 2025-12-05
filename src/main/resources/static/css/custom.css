@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- your meta, title, css files -->
+
+    <!-- Tailwind output.css -->
+    <link rel="stylesheet" href="/css/output.css">
+
+    <!-- Add THIS just below Tailwind!!! -->
+    <style>
+        .swal2-popup .swal2-styled {
+            font-weight: 500;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+        }
+
+        .swal2-popup .swal2-confirm {
+            background-color: #dc2626 !important;
+            color: white !important;
+        }
+
+        .swal2-popup .swal2-confirm:hover {
+            background-color: #b91c1c !important;
+        }
+
+        .swal2-popup .swal2-cancel {
+            background-color: #e5e7eb !important;
+            color: #374151 !important;
+        }
+
+        .swal2-popup .swal2-cancel:hover {
+            background-color: #d1d5db !important;
+        }
+    </style>
+
+</head>
