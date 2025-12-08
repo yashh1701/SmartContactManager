@@ -26,7 +26,7 @@
               
               <form
 	                class="mt-8"
-	                th:action="@{/user/contacts/update}"	
+	                th:action="@{'/user/contacts/update/' + ${contactId}}"	
 	                method="post"
 	                th:object="${contactForm}"
 	                enctype="multipart/form-data"
@@ -190,7 +190,7 @@
 
                   <img
                     class="max-h-52 mx-auto rounded-lg shadow m-3"
-                    src=""
+                    th:src="*{picture}"
                     id="upload_image_preview"
                     alt=""
                   />
