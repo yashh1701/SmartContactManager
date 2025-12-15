@@ -4,10 +4,12 @@ package com.scm.helpers;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
+import org.springframework.stereotype.Component;
 
 
 public class Helper {
 
+	
 	public static String getEmailOfLoggedInUser(Authentication authentication) {
 		
 		if(authentication instanceof OAuth2AuthenticationToken) {
@@ -37,6 +39,12 @@ public class Helper {
 		}
 		
 	}
-	
+
+
+	public static String getLinkForEmailVerificatiton(String emailToken) {
+
+        return "http://localhost:8080/" + emailToken;
+
+    }
 	
 }
