@@ -21,8 +21,9 @@
                               <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                               
                                    <!-- Action Button & Search Bar  -->
-                                   <form th:object="${contactSearchForm}" th:action="@{'/user/contacts/search'}">
-	                                    <div class="flex space-x-3 p-5 items-center  flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
+                                   <div class="flex md:flex-row flex-col items-center px-4 justify-between bg-white <dark:bg-gray-900></dark:bg-gray-900>">
+                                   		<form th:object="${contactSearchForm}" th:action="@{'/user/contacts/search'}">
+	                                      <div class="flex space-x-3 p-5 items-center  flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4">
 	                                        
 	                                        <!-- Select Button  -->
 	                                        <div>
@@ -66,12 +67,19 @@
 	                                        <button type="submit" class="px-3 py-2 bg-gray-800 text-white rounded">
 							                    Search
 							                </button>
-	                                   </div>
-
+	                                      </div>
+                                       </form>
+                                       <div>
+                                       		<button th:onclick="exportData()" 
+                                       		               type="submit" 
+                                       		               class="px-3 py-2 bg-green-800 text-white rounded">
+							                    Export
+							                </button>
+                                       </div>                               
+                                   </div>
                                    
-                                   </form>
-                                  <!-- TABLE -->
-                                   <table th:if="${pageContact.totalElements>0}" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                   <!-- TABLE -->
+                                   <table id="contact-table" th:if="${pageContact.totalElements>0}" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         <!-- HEADINGS -->
                                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                              <tr>
@@ -242,6 +250,7 @@
 
 
           </div>
+           <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
           <script data-th-src="@{'/js/contacts.js'}"></script>
           <script>
                console.log("Profile page script..");
@@ -249,5 +258,15 @@
                     window.location.href = `/user/contacts?size=${size}&page=0`;
                }
           </script>
+           <script>
+		      function exportData() {
+		        TableToExcel.convert(document.getElementById("contact-table"), {
+		          name: "contacts.xlsx",
+		          sheet: {
+		            name: "Sheet 1",
+		          },
+		        });
+		      }
+		    </script>
      </body>
 </html>
