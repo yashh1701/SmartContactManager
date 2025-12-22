@@ -1,22 +1,285 @@
-<!doctype html>
-<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}"> <!-- This html will be replace by parent fragment in base.html -->
-<head>
-	<title>About Page</title>
-</head>
-<body>
+	<!DOCTYPE html>
+	<html lang="en"
+	      th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
+	<head>
+	    <title>About | Smart Contact Manager</title>
+	</head>
+	
+	<body>
+	
+	<div id="content" class="bg-gray-50 dark:bg-gray-900">
+	
+	    <!-- ---------------------------------------------------------- -->
+	    <!-- HERO SECTION -->
+	    <!-- ---------------------------------------------------------- -->
+	    <section class="relative overflow-hidden pt-28 pb-28">
+	
+	        <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-10"></div>
+	
+	        <div class="max-w-6xl mx-auto px-6 text-center">
+	
+	            <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight">
+	                We build <span class="text-indigo-600">clarity</span> from contacts.
+	            </h1>
+	
+	            <p class="mt-6 text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+	                An advanced contact management ecosystem powered by intelligent data,
+	                automation, cloud syncing & security — built for users who demand excellence.
+	            </p>
+	
+	            <div class="mt-16 flex justify-center">
+	                <div class="backdrop-blur-lg bg-white/40 dark:bg-gray-800/40 shadow-xl rounded-3xl px-10 py-6 border border-white/40">
+	                    <p class="font-medium text-gray-700 dark:text-gray-300">
+	                        “Organize smarter. Connect faster. Grow stronger.”
+	                    </p>
+	                </div>
+	            </div>
+	
+	        </div>
+	    </section>
+	
+	
+	
+	    <!-- ---------------------------------------------------------- -->
+	    <!-- WHY SECTION -->
+	    <!-- ---------------------------------------------------------- -->
+	    <section class="max-w-7xl mx-auto px-6 py-12">
+	
+	        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+	
+	            <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-10 hover:scale-[1.02] transition">
+	                <h3 class="text-2xl font-bold text-indigo-600 mb-4">Why SCM?</h3>
+	                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+	                    Because spreadsheets, scattered phones & manual entries aren’t enough anymore.
+	                    We provide structure, automation & cloud power.
+	                </p>
+	            </div>
+	
+	            <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-10 hover:scale-[1.02] transition">
+	                <h3 class="text-2xl font-bold text-indigo-600 mb-4">Our Goal</h3>
+	                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+	                    To minimize user effort by letting SCM handle heavy organization —
+	                    freeing time for networking & growth.
+	                </p>
+	            </div>
+	
+	            <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-10 hover:scale-[1.02] transition">
+	                <h3 class="text-2xl font-bold text-indigo-600 mb-4">Core Idea</h3>
+	                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+	                    Personal data belongs to the user — not platforms.
+	                    We protect, encrypt & prioritize privacy before convenience.
+	                </p>
+	            </div>
+	
+	        </div>
+	
+	    </section>
+	
+	
+	
+	    <!-- ---------------------------------------------------------- -->
+	    <!-- VISION + MISSION FEATURE BLOCK -->
+	    <!-- ---------------------------------------------------------- -->
+	    <section class="py-4">
+	
+	        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+	
+	            <div class="bg-gray-100 dark:bg-gray-800 rounded-3xl shadow-xl p-12 relative hover:shadow-xl hover:-translate-y-2 transition">
+	                <div class="absolute top-0 left-0 w-full h-2 bg-indigo-600 rounded-t-3xl"></div>
+	
+	                <h2 class="text-3xl font-bold text-indigo-600 mb-6">
+	                    🟣 Our Vision
+	                </h2>
+	                <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+	                    A world where people never lose contacts, never struggle to find information,
+	                    and never depend on unsafe platforms — SCM becomes the trusted infrastructure.
+	                </p>
+	            </div>
+	
+	            <div class="bg-gray-100 dark:bg-gray-800 rounded-3xl shadow-xl p-12 relative hover:shadow-xl hover:-translate-y-2 transition">
+	                <div class="absolute top-0 left-0 w-full h-2 bg-purple-600 rounded-t-3xl"></div>
+	
+	                <h2 class="text-3xl font-bold text-indigo-600 mb-6">
+	                    🟣 Our Mission
+	                </h2>
+	                <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+	                    Deliver world-class contact management technology using cloud,
+	                    automation, security & AI-driven personal data intelligence.
+	                </p>
+	            </div>
+	
+	        </div>
+	
+	    </section>
+	
+	
+	
+	
+		    <!-- ---------------------------------------------------------- -->
+		    <!-- VALUES + TECH + ACHIEVEMENT SECTION -->
+		    <!-- ---------------------------------------------------------- -->
+		<section class="bg-gray-50 dark:bg-gray-900 py-20">
+		
+		    <div class="max-w-7xl mx-auto px-6">
+		
+		        <h2 class="text-center text-4xl font-extrabold text-gray-900 dark:text-white">
+		            What Makes SCM Unique?
+		        </h2>
+		
+		        <p class="text-center max-w-2xl mx-auto mt-4 text-gray-600 dark:text-gray-300 text-lg">
+		            SCM isn’t a basic contact book — it’s an identity management platform built on trust, security & intelligence.
+		        </p>
+		
+		
+		        <!-- 3 cards -->
+		        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16">
+		
+		
+		            <!-- Innovation -->
+		            <div class="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow hover:shadow-xl hover:-translate-y-2 transition">
+		                <div class="w-14 h-14 flex items-center justify-center rounded-xl bg-indigo-600">
+		                    <i class="fa-solid fa-brain text-2xl text-white"></i>
+		                </div>
+		
+		                <h3 class="mt-6 text-xl font-bold text-gray-900 dark:text-white">
+		                    Intelligent Data
+		                </h3>
+		
+		                <p class="mt-3 text-gray-600 dark:text-gray-300 leading-relaxed">
+		                    Contacts auto-organized by tags, favourites, importance, usage & history.
+		                </p>
+		            </div>
+		
+		
+		            <!-- Security -->
+		            <div class="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow hover:shadow-xl hover:-translate-y-2 transition">
+		                <div class="w-14 h-14 flex items-center justify-center rounded-xl bg-green-600">
+		                    <i class="fa-solid fa-shield-halved text-2xl text-white"></i>
+		                </div>
+		
+		                <h3 class="mt-6 text-xl font-bold text-gray-900 dark:text-white">
+		                    Enterprise Security
+		                </h3>
+		
+		                <p class="mt-3 text-gray-600 dark:text-gray-300 leading-relaxed">
+		                    End-to-end encryption, login shielding & safe cloud uploads.
+		                </p>
+		            </div>
+		
+		
+		            <!-- Performance -->
+		            <div class="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow hover:shadow-xl hover:-translate-y-2 transition">
+		                <div class="w-14 h-14 flex items-center justify-center rounded-xl bg-purple-600">
+		                    <i class="fa-solid fa-gauge-high text-2xl text-white"></i>
+		                </div>
+		
+		                <h3 class="mt-6 text-xl font-bold text-gray-900 dark:text-white">
+		                    Lightning Fast
+		                </h3>
+		
+		                <p class="mt-3 text-gray-600 dark:text-gray-300 leading-relaxed">
+		                    Optimized caching + database indexing = instant data retrieval.
+		                </p>
+		            </div>
+		
+		        </div>
+		
+		
+		
+		        <!-- TECH STACK SECTION -->
+		        <div class="mt-24">
+		
+		            <h3 class="text-center text-3xl font-extrabold text-gray-900 dark:text-white">
+		                Technology We Use
+		            </h3>
+		
+		            <p class="text-center max-w-xl mx-auto text-gray-600 dark:text-gray-300 mt-4">
+		                Modern engineering ensures reliability, scalability & performance.
+		            </p>
+		
+		
+		            <div class="flex flex-wrap justify-center gap-6 mt-14">
+		
+		
+		                <span class="px-6 py-3 bg-white dark:bg-gray-800 rounded-xl shadow text-gray-700 dark:text-gray-200 font-semibold">
+		                    Spring Boot
+		                </span>
+		
+		                <span class="px-6 py-3 bg-white dark:bg-gray-800 rounded-xl shadow text-gray-700 dark:text-gray-200 font-semibold">
+		                    Hibernate
+		                </span>
+		
+		                <span class="px-6 py-3 bg-white dark:bg-gray-800 rounded-xl shadow text-gray-700 dark:text-gray-200 font-semibold">
+		                    Thymeleaf
+		                </span>
+		
+		                <span class="px-6 py-3 bg-white dark:bg-gray-800 rounded-xl shadow text-gray-700 dark:text-gray-200 font-semibold">
+		                    TailwindCSS
+		                </span>
+		
+		                <span class="px-6 py-3 bg-white dark:bg-gray-800 rounded-xl shadow text-gray-700 dark:text-gray-200 font-semibold">
+		                    MySQL / PostgreSQL
+		                </span>
+		
+		                <span class="px-6 py-3 bg-white dark:bg-gray-800 rounded-xl shadow text-gray-700 dark:text-gray-200 font-semibold">
+		                    Cloud Storage
+		                </span>
+		
+		                <span class="px-6 py-3 bg-white dark:bg-gray-800 rounded-xl shadow text-gray-700 dark:text-gray-200 font-semibold">
+		                    OAuth 2.0
+		                </span>
+		
+		            </div>
+		
+		        </div>
+		
+		
+		
+		        <!-- IMPACT NUMBERS -->
+		        <div class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+		
+		            <div>
+		                <h2 class="text-5xl font-extrabold text-indigo-600">99.9%</h2>
+		                <p class="mt-2 text-gray-600 dark:text-gray-300 text-lg">
+		                    Uptime Guarantee
+		                </p>
+		            </div>
+		
+		            <div>
+		                <h2 class="text-5xl font-extrabold text-indigo-600">10,000+</h2>
+		                <p class="mt-2 text-gray-600 dark:text-gray-300 text-lg">
+		                    Contacts Managed
+		                </p>
+		            </div>
+		
+		            <div>
+		                <h2 class="text-5xl font-extrabold text-indigo-600">5ms</h2>
+		                <p class="mt-2 text-gray-600 dark:text-gray-300 text-lg">
+		                    Average Response Time
+		                </p>
+		            </div>
+		
+		        </div>
+		
+		    </div>
+		
+		</section>
 
-	<div id="content" >
-		<h1>Welcome to About Page</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-			quasi rerum cumque consequuntur aliquid repudiandae minus ab ipsam
-			tenetur architecto omnis eveniet reiciendis quibusdam iusto tempore
-			harum facilis repellendus neque.
-		</p>
+  
+	    <!-- ================= CTA ================= -->
+	    <section class="py-4 text-center mb-4">
+	        <a href="/signup"
+	           class="px-12 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700
+	                  text-white text-lg shadow-xl transition">
+	            Get Started Today →
+	        </a>
+	    </section>
+	
 	</div>
-
+	
 	<script>
-		console.log("About page script..")
+	    console.log("About Page Loaded");
 	</script>
-
-</body>
-</html>
+	
+	</body>
+	</html>

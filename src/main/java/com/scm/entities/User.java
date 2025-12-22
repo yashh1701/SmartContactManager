@@ -47,6 +47,7 @@ public class User implements UserDetails {
     @Column(length = 1000)
     private String about;
     @Column(length = 1000)
+    @Getter(value = AccessLevel.NONE)
     private String profilePic;
     private String phoneNumber;
 
@@ -118,6 +119,15 @@ public class User implements UserDetails {
     public String getPassword() {
         return this.password;
     }
+
+
+	public String getProfilePic() {
+		
+		if (this.profilePic == null || this.profilePic.isEmpty()) {
+	        return "https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg?semt=ais_hybrid&w=740&q=80";
+	    }
+		return profilePic;
+	}
     
 
     

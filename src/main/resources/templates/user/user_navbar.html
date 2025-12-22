@@ -1,150 +1,141 @@
 <nav
    data-th-fragment="user-navbar"
-   class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 left-0 right-0 border-b border-gray-200 dark:border-gray-600 sm:pl-64"
->
-   <div
-      class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
-   >
-   	  <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-		   <span class="sr-only">Open sidebar</span>
-		   <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-		   		<path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
-		   </svg>
-	 </button>
-      <!-- Brand Logo -->
-      <a
-         data-th-href="@{'/home'}"
-         class="flex items-center space-x-3 rtl:space-x-reverse"
-      >
-         <img
-            data-th-src="@{'/images/contact-book.png'}"
-            class="h-8"
-            alt="Flowbite Logo"
-         />
-         <span
-            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-            >SCM</span
-         >
+   class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 right-0 
+       border-b border-gray-300 dark:border-gray-700 sm:pl-64 shadow-md">
+
+   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+
+      <!-- Sidebar toggle on mobile -->
+      <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar"
+              aria-controls="logo-sidebar"
+              type="button"
+              class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden 
+                     hover:bg-gray-200 dark:hover:bg-gray-700 focus:ring-2 focus:ring-indigo-400">
+	
+         <span class="sr-only">Open sidebar</span>
+
+         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path clip-rule="evenodd" fill-rule="evenodd"
+               d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+            </path>
+         </svg>
+
+      </button>
+
+      <!-- Brand -->
+      <a data-th-href="@{'/home'}"
+         class="flex items-center space-x-3 transition-transform hover:scale-105">
+
+         <img data-th-src="@{'/images/contact-book.png'}"
+              class="h-9 w-9" />
+
+         <span class="self-center text-2xl font-bold text-gray-900 dark:text-white tracking-wide">
+            SCM
+         </span>
       </a>
-      <!-- End of brand logo  -->
 
-      <div
-         class="flex gap-2 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
-      >
-         <!-- Light-Dark Theme Button -->
-         <button
-            id="theme_change_button"
-            class="bg-gray-200 px-3 py-2 rounded-lg dark:text-white dark:bg-gray-600"
-         >
-            <i class="fa-solid fa-circle-half-stroke"></i> <span>Light</span>
+      <!-- RIGHT SIDE BUTTON SET -->
+      <div class="flex items-center md:order-2 gap-3">
+
+         <!-- THEME BUTTON -->
+         <button id="theme_change_button"
+            class="px-3 py-2 rounded-lg bg-gray-200 text-gray-700 
+                   dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300 
+                   dark:hover:bg-gray-600 transition font-medium">
+
+            <i class="fa-solid fa-circle-half-stroke"></i>
          </button>
-		<a
-            data-th-href="@{'/user/profile'}"
-            type="button"
-            class="hidden md:flex text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-            >
-            <span data-th-text="${loggedInUser.name}">	</span>
-         </a>
-         <a
-            data-th-href="@{'/logout'}"
-            type="button"
-            class="hidden md:flex text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-            >Logout
-         </a>
-         
 
-         <!-- Icons to Open Menu on Small screen -->
-         <button
-            data-collapse-toggle="navbar-sticky"
-            type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-sticky"
-            aria-expanded="false"
-         >
+         <!-- PROFILE BUTTON -->
+         <a data-th-href="@{'/user/profile'}"
+            class="hidden md:flex bg-indigo-600 hover:bg-indigo-700 text-white 
+                   shadow-md rounded-lg px-4 py-2 transition">
+
+            <span data-th-text="${loggedInUser.name}"></span>
+         </a>
+
+         <!-- LOGOUT -->
+         <a data-th-href="@{'/logout'}"
+            class="hidden md:flex bg-red-600 hover:bg-red-700 text-white 
+                   shadow-md rounded-lg px-4 py-2 transition">
+            Logout
+         </a>
+
+         <!-- Mobile menu button -->
+         <button data-collapse-toggle="navbar-sticky" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm 
+                       text-gray-500 rounded-lg md:hidden hover:bg-gray-200 
+                       dark:hover:bg-gray-800 transition">
+
             <span class="sr-only">Open main menu</span>
-            <svg
-               class="w-5 h-5"
-               aria-hidden="true"
-               xmlns="http://www.w3.org/2000/svg"
-               fill="none"
-               viewBox="0 0 17 14"
-            >
-               <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M1 1h15M1 7h15M1 13h15"
-               />
+
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 17 14"
+                 stroke="currentColor" stroke-width="2">
+               <path stroke-linecap="round" stroke-linejoin="round"
+                     d="M1 1h15M1 7h15M1 13h15" />
             </svg>
          </button>
       </div>
 
-      <!-- Main Menu -->
-      <div
-         class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-         id="navbar-sticky"
-      >
+      <!-- NAV MENU LINKS -->
+      <div id="navbar-sticky"
+          class="hidden w-full md:flex md:w-auto md:order-1">
+
          <ul
-            class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-         >
+            class="flex flex-col md:flex-row gap-2 md:gap-8 px-4 md:px-0 
+                   mt-4 md:mt-0 text-gray-700 dark:text-white font-medium">
+
             <li>
-               <a
-                  data-th-href="@{'/home'}"
-                  class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
-                  aria-current="page"
-               >
-                  Home</a
-               >
+               <a data-th-href="@{'/home'}"
+                  class="block py-2 px-3 rounded-lg hover:bg-indigo-600 hover:text-white
+                         transition md:hover:bg-transparent md:hover:text-indigo-600">
+                  Home
+               </a>
             </li>
 
             <li>
-               <a
-                  data-th-href="@{'/about'}"
-                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-               >
-                  About</a
-               >
+               <a data-th-href="@{'/about'}"
+                  class="block py-2 px-3 rounded-lg hover:bg-indigo-600 hover:text-white 
+                         transition md:hover:bg-transparent md:hover:text-indigo-600">
+                  About
+               </a>
             </li>
 
             <li>
-               <a
-                  data-th-href="@{'/services'}"
-                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-               >
-                  Services</a
-               >
+               <a data-th-href="@{'/services'}"
+                  class="block py-2 px-3 rounded-lg hover:bg-indigo-600 hover:text-white 
+                         transition md:hover:bg-transparent md:hover:text-indigo-600">
+                  Services
+               </a>
             </li>
 
             <li>
-               <a
-                  data-th-href="@{'contact'}"
-                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-               >
-                  Contact</a
-               >
+               <a data-th-href="@{'contact'}"
+                  class="block py-2 px-3 rounded-lg hover:bg-indigo-600 hover:text-white 
+                         transition md:hover:bg-transparent md:hover:text-indigo-600">
+                  Contact
+               </a>
             </li>
-            
-            <li>
-	            <a
-		            data-th-href="@{'/user/profile'}"
-		            type="button"
-		            class="md:hidden  text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-		            >
-		            <span data-th-text="${loggedInUser.name}">	</span>
-	            </a>
-         
+
+            <!-- Mobile user name button -->
+            <li class="md:hidden">
+               <a data-th-href="@{'/user/profile'}"
+                  class="block bg-indigo-600 hover:bg-indigo-700 text-white text-center px-4 py-2 rounded-lg">
+                  <span data-th-text="${loggedInUser.name}"></span>
+               </a>
             </li>
-            <li>
-	            <a
-		            data-th-href="@{'/logout'}"
-		            type="button"
-		            class="md:hidden text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-		            >Logout
-	         </a>
+
+            <!-- Mobile logout -->
+            <li class="md:hidden">
+               <a data-th-href="@{'/logout'}"
+                  class="block bg-red-600 hover:bg-red-700 text-white text-center px-4 py-2 rounded-lg">
+                  Logout
+               </a>
             </li>
-            
+
          </ul>
+
       </div>
+
    </div>
 </nav>

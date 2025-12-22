@@ -49,7 +49,6 @@ public class UserServiceImpl implements UserService {
         String emailToken = UUID.randomUUID().toString();
         user.setEmailToken(emailToken);
         User savedUser = userRepo.save(user);
-        System.out.println("yash issue");
         String emailLink = Helper.getLinkForEmailVerificatiton(emailToken);
         emailService.sendEmail(savedUser.getEmail(), "Verify Account : Smart  Contact Manager", emailLink);
         return savedUser;

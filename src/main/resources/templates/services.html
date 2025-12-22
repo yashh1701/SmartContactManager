@@ -1,19 +1,165 @@
 <!doctype html>
-<html lang="en" th:replace="~{base :: parent(~{::#content},  ~{::title}, ~{::script})}">
+<html lang="en"
+      th:replace="~{base :: parent(~{::#content},  ~{::title}, ~{::script})}">
 <head>
-	<title>Services Page</title>
+    <title>Services | Smart Contact Manager</title>
 </head>
+
 <body>
-	<div id="content">
-		<h1>Welcome to Services Page</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-			quasi rerum cumque consequuntur aliquid repudiandae minus ab ipsam
-			tenetur architecto omnis eveniet reiciendis quibusdam iusto tempore
-			harum facilis repellendus neque.</p>
-	</div>
-	
-	<script>
-		console.log("Services page script..")
-	</script>
+
+<div id="content" class="bg-gray-50 dark:bg-gray-900 pt-24">
+
+    <!-- ================= HERO ================= -->
+    <section class="text-center px-6 pb-20">
+
+        <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white">
+            Powerful <span class="text-indigo-600">Services</span> crafted for you.
+        </h1>
+
+        <p class="mt-6 text-lg md:text-xl max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+            From secure contacts to AI organization — SCM delivers tools that 
+            simplify digital networking with professional control & automation.
+        </p>
+    </section>
+
+
+
+
+    <!-- ================= SERVICE CARDS ================= -->
+    <section class="max-w-7xl mx-auto px-6 pb-24">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+
+
+            <!-- CONTACT STORAGE -->
+            <div class="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-xl hover:scale-[1.02] transition">
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center bg-indigo-600">
+                    <i class="fa-solid fa-address-card text-3xl text-white"></i>
+                </div>
+
+                <h3 class="mt-6 text-2xl font-bold text-gray-900 dark:text-white">
+                    Smart Contact Storage
+                </h3>
+
+                <p class="mt-4 text-gray-600 dark:text-gray-300">
+                    Store unlimited contacts with cloud backup,
+                    intelligent grouping & tag-based searching.
+                </p>
+            </div>
+
+
+
+            <!-- MAIL + INTERACTION -->
+            <div class="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-xl hover:scale-[1.02] transition">
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center bg-purple-600">
+                    <i class="fa-solid fa-envelope-open-text text-3xl text-white"></i>
+                </div>
+
+                <h3 class="mt-6 text-2xl font-bold text-gray-900 dark:text-white">
+                    Email Interaction
+                </h3>
+
+                <p class="mt-4 text-gray-600 dark:text-gray-300">
+                    Send emails to contacts directly from SCM —
+                    track sending history and automate reminders.
+                </p>
+            </div>
+
+
+
+            <!-- AI ORGANIZATION -->
+            <div class="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-xl hover:scale-[1.02] transition">
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center bg-pink-600">
+                    <i class="fa-solid fa-wand-magic-sparkles text-3xl text-white"></i>
+                </div>
+
+                <h3 class="mt-6 text-2xl font-bold text-gray-900 dark:text-white">
+                    AI Auto Organizing
+                </h3>
+
+                <p class="mt-4 text-gray-600 dark:text-gray-300">
+                    Contacts are auto-arranged by category, 
+                    favourites & communication priority levels.
+                </p>
+            </div>
+
+
+
+            <!-- PROFILE MANAGEMENT -->
+            <div class="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-xl hover:scale-[1.02] transition">
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center bg-green-600">
+                    <i class="fa-solid fa-user-pen text-3xl text-white"></i>
+                </div>
+
+                <h3 class="mt-6 text-2xl font-bold text-gray-900 dark:text-white">
+                    Profile & Identity
+                </h3>
+
+                <p class="mt-4 text-gray-600 dark:text-gray-300">
+                    Update public profile, add profile image,
+                    and personalize user identity inside SCM.
+                </p>
+            </div>
+
+
+
+            <!-- MULTI DEVICE SYNC -->
+            <div class="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-xl hover:scale-[1.02] transition">
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center bg-yellow-500">
+                    <i class="fa-solid fa-cloud-arrow-up text-3xl text-white"></i>
+                </div>
+
+                <h3 class="mt-6 text-2xl font-bold text-gray-900 dark:text-white">
+                    Cloud Syncing
+                </h3>
+
+                <p class="mt-4 text-gray-600 dark:text-gray-300">
+                    Access SCM anywhere — your notes & contacts are synced across devices.
+                </p>
+            </div>
+
+
+
+            <!-- SECURITY & AUTH -->
+            <div class="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-xl hover:scale-[1.02] transition">
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center bg-red-600">
+                    <i class="fa-solid fa-shield-halved text-3xl text-white"></i>
+                </div>
+
+                <h3 class="mt-6 text-2xl font-bold text-gray-900 dark:text-white">
+                    Enterprise Security
+                </h3>
+
+                <p class="mt-4 text-gray-600 dark:text-gray-300">
+                    Fully encrypted data protection at REST + transit
+                    with multi-identity login provider support.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- ================= CTA ================= -->
+    <section class="pb-24 text-center mt-24 mb-12">
+
+        <a href="/signup"
+           class="text-lg px-12 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700
+                  text-white shadow-xl transition">
+            Get Started Today →
+        </a>
+
+    </section>
+
+
+</div>
+
+<script>
+    console.log("Services Loaded");
+</script>
+
 </body>
 </html>

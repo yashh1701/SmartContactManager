@@ -1,33 +1,171 @@
 <!doctype html>
-<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}"> <!-- This html will be replace by parent fragment in base.html -->
-<head data-th-text="${loggedInUser.name} + ' | SCM">
-	<title>Profile Page</title>
+<html lang="en"
+      data-th-replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>User Profile</title>
 </head>
+
 <body>
 
-	<div id="content">
-	
-	    <!-- user is logged in - below sidebar -->
-		<div data-th-if="${loggedInUser}" >
-			<div  data-th-replace="~{user/sidebar :: sidebar}"></div> 	
-		</div>
- 
- 		<div class="sm:pl-64 pt-20" style="height:1000px">
-			<div  class="sm:px-2">
-				<h1 >Welcome to User Profile Page</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-					quasi rerum cumque consequuntur aliquid repudiandae minus ab ipsam
-					tenetur architecto omnis eveniet reiciendis quibusdam iusto tempore
-					harum facilis repellendus neque.
-				</p>
-			</div>
-		</div>
-		
-	</div>
+<div id="content">
 
-	<script>
-		console.log("Profile page script..")
-	</script>
+    <!-- SIDEBAR -->
+    <div data-th-if="${loggedInUser}">
+        <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+    </div>
 
+    <!-- PAGE BODY -->
+    <div class="sm:pl-64 pt-20 bg-gray-100 dark:bg-gray-900 min-h-screen">
+
+        <div class="px-8 py-4">
+
+
+            <!-- HEADER -->
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 
+                        flex items-center gap-6 
+                        border border-transparent hover:border-indigo-500 
+                        transition-all duration-300 hover:shadow-indigo-300/20">
+
+                <img data-th-if="${loggedInUser.profilePic}"
+                     data-th-src="@{${loggedInUser.profilePic}}"
+                     class="w-28 h-28 rounded-full object-cover shadow-lg ring-4 ring-indigo-500/20">
+
+                <img data-th-if="${loggedInUser.profilePic == null}"
+                    data-th-src="@{${loggedInUser.profilePic}}"
+                     class="w-28 h-28 rounded-full object-cover shadow-lg ring-4 ring-indigo-500/20">
+
+                <div>
+                    <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight"
+                        data-th-text="${loggedInUser.name}">
+                    </h1>
+
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mt-2 pl-2"
+                       data-th-text="${loggedInUser.email}">
+                    </p>
+
+                    
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK STATS -->
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- TOTAL -->
+                <div class="bg-white dark:bg-gray-800 shadow p-6 rounded-xl text-center 
+                            hover:scale-[1.03] transition duration-300 
+                            border border-transparent hover:border-indigo-500/50">
+
+                    <p class="uppercase text-xs text-gray-500 dark:text-gray-300 font-semibold tracking-wide">
+                        Total Contacts
+                    </p>
+                    <h1 class="text-4xl text-indigo-600 font-extrabold mt-3"
+                        data-th-text="${loggedInUser.contacts.size()}">
+                    </h1>
+                </div>
+
+                <!-- FAVOURITES -->
+                <div class="bg-white dark:bg-gray-800 shadow p-6 rounded-xl text-center 
+                            hover:scale-[1.03] transition duration-300 
+                            border border-transparent hover:border-indigo-500/50">
+
+                    <p class="uppercase text-xs text-gray-500 dark:text-gray-300 font-semibold tracking-wide">
+                        Favourite
+                    </p>
+
+                    <h1 class="text-4xl text-pink-600 dark:text-pink-400 font-extrabold mt-3"
+                        data-th-text="${favouriteCount}">
+                    </h1>
+                </div>
+
+                <!-- STATUS -->
+                <div class="bg-white dark:bg-gray-800 shadow p-6 rounded-xl text-center 
+                            hover:scale-[1.03] transition duration-300 
+                            border border-transparent hover:border-indigo-500/50">
+
+                    <p class="uppercase text-xs text-gray-500 dark:text-gray-300 font-semibold tracking-wide">
+                        Account Status
+                    </p>
+
+                    <h1 class="text-2xl text-green-600 dark:text-green-400 font-extrabold mt-3"
+                        data-th-text="${loggedInUser.enabled ? 'Active' : 'Disabled'}">
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <!-- PERSONAL INFO -->
+            <div class="bg-white dark:bg-gray-800 shadow-xl rounded-xl p-6 mt-10
+            			hover:scale-[1.02] transition duration-300
+                        border border-transparent hover:border-indigo-500/30
+                        transition duration-300">
+
+                <h2 class="text-xl font-extrabold mb-6 text-gray-900 dark:text-white tracking-wide">
+                    Personal Information
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-6">
+
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1 uppercase tracking-wide">Name</p>
+                        <h4 class="font-semibold text-gray-900 dark:text-white"
+                            data-th-text="${loggedInUser.name}"></h4>
+                    </div>
+
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1 uppercase tracking-wide">Email</p>
+                        <h4 class="font-semibold text-gray-900 dark:text-white"
+                            data-th-text="${loggedInUser.email}"></h4>
+                    </div>
+
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1 uppercase tracking-wide">Phone</p>
+                        <h4 class="font-semibold text-gray-900 dark:text-white"
+                            data-th-text="${loggedInUser.phoneNumber ?: 'Not added'}"></h4>
+                    </div>
+
+                    <div>
+                        <p class="text-gray-500 text-sm mb-1 uppercase tracking-wide">Provider</p>
+                        <h4 class="font-semibold text-gray-900 dark:text-white"
+                            data-th-text="${loggedInUser.provider}"></h4>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTON SECTION -->
+            <div class="mt-10 flex gap-4 flex-wrap">
+
+                <a href="/user/profile/edit"
+                   class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-lg shadow-lg
+                          transition duration-300 hover:shadow-indigo-500/30">
+                    Edit Profile
+                </a>
+
+                <a href="/user/contacts"
+                   class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:text-white px-5 py-3 rounded-lg 
+                          shadow transition duration-300 hover:shadow-gray-500/20">
+                    View Contacts
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    console.log("Profile loaded");
+</script>
 </body>
 </html>

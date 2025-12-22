@@ -1,22 +1,160 @@
 <!doctype html>
-<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}"> <!-- This html will be replace by parent fragment in base.html -->
+<html lang="en"
+      th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
-	<title>Contact Page</title>
+    <title>Contact | Smart Contact Manager</title>
 </head>
+
 <body>
 
-	<div id="content">
-		<h1>Welcome to Contact Page</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-			quasi rerum cumque consequuntur aliquid repudiandae minus ab ipsam
-			tenetur architecto omnis eveniet reiciendis quibusdam iusto tempore
-			harum facilis repellendus neque.
-		</p>
-	</div>
+<div id="content" class="bg-gray-50 dark:bg-gray-900 min-h-screen pt-24">
 
-	<script>
-		console.log("Contact page script..")
-	</script>
+    <!-- ============================= -->
+    <!-- HERO TITLE -->
+    <!-- ============================= -->
+    <section class="text-center px-6 mb-14">
+        <h1 class="text-5xl font-extrabold text-gray-900 dark:text-white">
+            Contact <span class="text-indigo-600">Us</span>
+        </h1>
+
+        <p class="mt-4 max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-lg">
+            Have a question, need support or want to give feedback?
+            We are always here to help.
+        </p>
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- CONTENT WRAPPER -->
+    <!-- ============================= -->
+    <section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6 pb-24">
+
+        <!-- ===================================================== -->
+        <!-- LEFT CONTACT INFORMATION CARD -->
+        <!-- ===================================================== -->
+        <div
+            class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-10 flex flex-col justify-between
+                   hover:scale-[1.01] transition">
+
+            <div>
+
+                <h2 class="text-3xl font-bold text-indigo-600 mb-8">
+                    Reach Us
+                </h2>
+
+                <!-- Email -->
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="bg-indigo-100 dark:bg-indigo-900/40 p-3 rounded-xl">
+                        <i class="fa-solid fa-envelope text-indigo-600 dark:text-indigo-400 text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Email</h3>
+                        <p class="text-gray-600 dark:text-gray-300">support@scm.com</p>
+                    </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="bg-indigo-100 dark:bg-indigo-900/40 p-3 rounded-xl">
+                        <i class="fa-solid fa-phone text-indigo-600 dark:text-indigo-400 text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Phone</h3>
+                        <p class="text-gray-600 dark:text-gray-300">+91 9876543210</p>
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="bg-indigo-100 dark:bg-indigo-900/40 p-3 rounded-xl">
+                        <i class="fa-solid fa-location-dot text-indigo-600 dark:text-indigo-400 text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Office Address</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Mumbai, Maharashtra, India
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-gray-500 dark:text-gray-400 text-sm text-center mt-10">
+                SCM — We make connections smarter.
+            </p>
+
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- RIGHT CONTACT FORM -->
+        <!-- ===================================================== -->
+        <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-10">
+
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+                Send a Message
+            </h2>
+
+            <form th:object="${contactForm}"
+                  method="post"
+                  action="#">
+
+                <!-- NAME -->
+                <div class="mb-6">
+                    <label class="block mb-2 font-semibold text-gray-700 dark:text-gray-200">
+                        Your Name
+                    </label>
+                    <input type="text"
+                           class="w-full rounded-xl border-gray-300 dark:border-gray-700
+                                  dark:bg-gray-900 dark:text-white
+                                  focus:ring-indigo-500 focus:border-indigo-500"
+                           placeholder="Enter your name">
+                </div>
+
+                <!-- EMAIL -->
+                <div class="mb-6">
+                    <label class="block mb-2 font-semibold text-gray-700 dark:text-gray-200">
+                        Your Email
+                    </label>
+                    <input type="email"
+                           class="w-full rounded-xl border-gray-300 dark:border-gray-700
+                                  dark:bg-gray-900 dark:text-white
+                                  focus:ring-indigo-500 focus:border-indigo-500"
+                           placeholder="Enter your email">
+                </div>
+
+                <!-- MESSAGE -->
+                <div class="mb-8">
+                    <label class="block mb-2 font-semibold text-gray-700 dark:text-gray-200">
+                        Message
+                    </label>
+                    <textarea rows="5"
+                              class="w-full rounded-xl border-gray-300 dark:border-gray-700
+                                     dark:bg-gray-900 dark:text-white
+                                     focus:ring-indigo-500 focus:border-indigo-500"
+                              placeholder="Write your message..."></textarea>
+                </div>
+
+                <button type="submit"
+                        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-xl
+                               shadow-xl font-semibold text-lg transition">
+                    Send Message →
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+    console.log("Contact page loaded!");
+</script>
 
 </body>
 </html>

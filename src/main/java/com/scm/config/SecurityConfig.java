@@ -98,7 +98,7 @@ public class SecurityConfig {
 	        	formLogin.loginPage("/login");    // this is our custom login page
 	        	formLogin.loginProcessingUrl("/authenticate");  // the will submit to this url
 //	        	formLogin.successForwardUrl("/user/profile");   // not working shows error after login error 404
-	        	formLogin.defaultSuccessUrl("/user/profile");
+	        	formLogin.defaultSuccessUrl("/user/dashboard");
 //	        	formLogin.failureForwardUrl("/login?error=true");
 	        	formLogin.usernameParameter("email");
 	        	formLogin.passwordParameter("password");
