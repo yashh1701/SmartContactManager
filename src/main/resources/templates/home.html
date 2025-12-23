@@ -12,29 +12,30 @@
 <div id="content" class="bg-white dark:bg-gray-900 min-h-screen">
 
     <!-- HERO -->
-    <section class="relative overflow-hidden pt-28 pb-28">
+    <section class="relative z-0 overflow-hidden pt-28 pb-20">
 
-        <!-- Gradient Background -->
-        <div class="absolute inset-0 -z-10 bg-gradient-to-br 
-                    from-indigo-600 via-purple-600 to-pink-500 opacity-20 dark:opacity-25">
+        <!-- Gradient Background (NON-CLICKABLE) -->
+        <div class="absolute inset-0 -z-10 pointer-events-none
+                    bg-gradient-to-r from-indigo-600 to-purple-600 opacity-10">
         </div>
 
-        <div class="px-6 max-w-6xl mx-auto text-center">
+        <div class="px-6 max-w-6xl mx-auto text-center relative z-10">
 
             <h1 class="text-5xl md:text-6xl font-extrabold pb-4
-					           text-transparent bg-clip-text 
-					           bg-gradient-to-r from-indigo-700 to-purple-700
-					           dark:from-indigo-400 dark:to-purple-300">
+                       text-transparent bg-clip-text 
+                       bg-gradient-to-r from-indigo-700 to-purple-700
+                       dark:from-indigo-400 dark:to-purple-300">
                 Smart Contact Manager
             </h1>
 
-            <p class="mt-6 text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p class="mt-6 text-xl text-gray-700 dark:text-gray-300
+                      max-w-3xl mx-auto leading-relaxed">
                 Manage contacts efficiently, securely & beautifully — with the power
                 of cloud, search, favourites & email integration.
             </p>
 
             <!-- Action Buttons -->
-            <div class="mt-10 flex flex-wrap justify-center gap-4">
+            <div class="mt-10 flex flex-wrap justify-center gap-4 relative z-10">
 
                 <a th:href="@{'/signup'}"
                    class="px-10 py-3 rounded-full bg-indigo-600 hover:bg-indigo-700
@@ -59,12 +60,10 @@
 
 
     <!-- STATS SECTION -->
-    <section class="py-16 
-                   bg-gray-50 dark:bg-gray-800 border-y
+    <section class="py-16 bg-gray-50 dark:bg-gray-800 border-y
                    border-gray-200 dark:border-gray-700">
 
-        <div class="max-w-6xl mx-auto grid sm:grid-cols-3 
-                    gap-10 text-center px-6">
+        <div class="max-w-6xl mx-auto grid sm:grid-cols-3 gap-10 text-center px-8">
 
             <div>
                 <h1 class="text-5xl font-bold text-indigo-600 dark:text-indigo-400">5k+</h1>
@@ -88,21 +87,20 @@
             </div>
 
         </div>
-
     </section>
 
 
     <!-- FEATURES -->
-    <section class="py-24 px-6">
+    <section class="py-20 px-6">
 
         <h2 class="text-3xl md:text-4xl font-bold text-center
-                   text-gray-900 dark:text-white mb-14">
+                   text-gray-900 dark:text-white mb-20">
             Powerful Features
         </h2>
 
         <div class="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
-            <div class="text-center bg-white dark:bg-gray-800 p-8 rounded-2xl shadow hover:-translate-y-1 transition">
+            <div class="text-center bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg p-10 hover:-translate-y-2 transition">
                 <div class="text-5xl">⚡</div>
                 <h3 class="text-xl font-bold my-3 dark:text-white">Fast Access</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm">
@@ -110,7 +108,7 @@
                 </p>
             </div>
 
-            <div class="text-center bg-white dark:bg-gray-800 p-8 rounded-2xl shadow hover:-translate-y-1 transition">
+            <div class="text-center bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg p-10 hover:-translate-y-2 transition">
                 <div class="text-5xl">🔒</div>
                 <h3 class="text-xl font-bold my-3 dark:text-white">Secure Storage</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm">
@@ -118,7 +116,7 @@
                 </p>
             </div>
 
-            <div class="text-center bg-white dark:bg-gray-800 p-8 rounded-2xl shadow hover:-translate-y-1 transition">
+            <div class="text-center bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg p-10 hover:-translate-y-2 transition">
                 <div class="text-5xl">📱</div>
                 <h3 class="text-xl font-bold my-3 dark:text-white">Responsive UI</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm">
@@ -126,7 +124,7 @@
                 </p>
             </div>
 
-            <div class="text-center bg-white dark:bg-gray-800 p-8 rounded-2xl shadow hover:-translate-y-1 transition">
+            <div class="text-center bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg p-10 hover:-translate-y-2 transition">
                 <div class="text-5xl">🌐</div>
                 <h3 class="text-xl font-bold my-3 dark:text-white">Social Login</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm">
@@ -134,14 +132,15 @@
                 </p>
             </div>
 
-            <div class="text-center bg-white dark:bg-gray-800 p-8 rounded-2xl shadow hover:-translate-y-1 transition">
+            <div class="text-center bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg p-10 hover:-translate-y-2 transition">
                 <div class="text-5xl">📤</div>
                 <h3 class="text-xl font-bold my-3 dark:text-white">Email Support</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm">
                     Send emails to contacts inside application.
                 </p>
             </div>
-            <div class="bg-white dark:bg-gray-800 text-center p-8 rounded-2xl shadow hover:-translate-y-1 transition">
+
+            <div class="text-center bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg p-10 hover:-translate-y-2  transition">
                 <div class="text-5xl">❤️</div>
                 <h3 class="text-xl font-bold my-3 dark:text-white">Favourite Contacts</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm">
@@ -149,31 +148,28 @@
                 </p>
             </div>
 
-            <!-- <div class="feature-card">
-                <span class="emoji">⭐</span>
-                <h3>Favourite Contacts</h3>
-                <p>Mark important people & access them quickly.</p>
-            </div> -->
-
         </div>
-
     </section>
 
 
     <!-- CTA -->
-    <section class="py-20 text-center">
+    <section class="py-20 text-center gap-8">
 
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+        <div>
+        	<h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
             Begin Contact Management Today!
-        </h2>
+        	</h2>
+        </div>
 
-        <a th:href="@{'/signup'}"
-           class="px-14 py-4 bg-gradient-to-r from-indigo-600 to-purple-600
-                  hover:from-indigo-700 hover:to-purple-700
-                  text-white text-xl rounded-full shadow-xl
-                  hover:scale-110 transition font-semibold">
-            Create Account →
-        </a>
+        <div class="mt-12">
+        	<a th:href="@{'/signup'}"
+		           class="px-14 py-4 bg-gradient-to-r from-indigo-600 to-purple-600
+		                  hover:from-indigo-700 hover:to-purple-700
+		                  text-white text-xl rounded-full shadow-xl
+		                  hover:scale-110 transition font-semibold">
+		            Create Account →
+       		 </a>
+        </div>
 
     </section>
 
@@ -184,24 +180,9 @@
 
 </div>
 
-<!-- Reusable Tailwind style classes -->
-<style>
-    .feature-card {
-        @apply bg-white dark:bg-gray-800 p-10 rounded-3xl shadow 
-               hover:-translate-y-2 transition transform text-center;
-    }
-    .feature-card h3{
-        @apply text-xl font-semibold dark:text-white mt-4 mb-2;
-    }
-    .feature-card p{
-        @apply text-gray-600 dark:text-gray-300 text-sm leading-relaxed;
-    }
-    .emoji {
-        @apply text-5xl;
-    }
-</style>
 <script>
-    console.log("Profile loaded");
+    console.log("Home page loaded");
 </script>
+
 </body>
 </html>
