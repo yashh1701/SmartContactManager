@@ -1,185 +1,166 @@
 <!doctype html>
-<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
-<!-- This html will be replace by parent fragment in base.html -->
+<html lang="en"
+      th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
+
 <head>
-<title>SignUp Page</title>
+    <title>Sign Up | Smart Contact Manager</title>
 </head>
+
 <body>
 
-	<div id="content">
-		<div class="grid grid-cols-12 mt-4 pt-20">
-			<div class="col-span-4 md:col-span-2 lg:col-span-3 xl:col-span-4"></div>
-			
-			<div class="col-span-12 md:col-span-8 lg:col-span-6 xl:col-span-4">
-				<!-- 6 col ki space le rahi hai -->
-				
-				<!-- card -->
-				<div  
-					class="block p-6 border-t-[10px] border-blue-700 bg-white rounded-xl shadow  dark:bg-gray-900 dark:border-blue-700 dark:hover:bg-gray-800">
-					
-					<!-- SignUp Successful Message here  -->
-					<div data-th-replace="~{message::messagebox}"></div> 
-					
-					<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-					SignUp Here</h5>
-					<p class="font-normal text-gray-400 dark:text-white-100">Start managing contacts on cloud...
-					</p>
-					
-					<!-- This is form -->
-					<form data-th-action="@{'/do-signup'}" 
-					method="post" 
-					data-th-object="${userForm}" 
-					class="mt-5" 
-					novalidate 
-					>
-					    <!-- Name  -->
-		              	<div class="mb-3">
-			                <label
-			                  for="name"
-			                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-			                  >Name</label
-			                >
-			                <input
-			                  type="text"
-			                  id="name"
-			                  th:value="${userForm.name}"
-			                  th:field="*{name}"
-			                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-			                  placeholder="Enter your name"
-			                  required
-			                />
-			                <!-- Below line tag is for displaying validation msg(video-14) -->
-			                <p
-			                  data-th-if="${#fields.hasErrors('name')}"
-			                  data-th-errors="*{name}"
-			                  class="text-red-600 px-1 py-2"
-			                >
-			                </p>
-						</div>	
-						
-						<!-- Email  -->
-		              	<div class="mb-3">
-			                <label
-			                  for="email"
-			                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-			                  >Email</label
-			                >
-			                <input
-			                  type="email"
-			                  id="email"
-			                  th:value="${userForm.email}"
-			                  th:field="*{email}"
-			                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-			                  placeholder="Enter your email"
-			                  required
-			                />
-			                <p
-			                  data-th-if="${#fields.hasErrors('email')}"
-			                  data-th-errors="*{email}"
-			                  class="text-red-600 px-1 py-2"
-			                >
-			                </p>
-						</div>	
-						
-						 <!-- Password field -->
-			              <div class="mb-3">
-			                <label
-			                  for="password"
-			                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-			                  >New Password</label
-			                >
-			                <input
-			                  type="password"
-			                  id="password"
-			                  th:value="${userForm.password}"
-			                  th:field="*{password}"
-			                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-			                  placeholder="Create strong password" 
-			                  required
-			                />
-			                <p
-			                  data-th-if="${#fields.hasErrors('password')}"
-			                  data-th-errors="*{password}"
-			                  class="text-red-600 px-1 py-2"
-			                >
-			                </p>
-			              </div>
-			              
-			             <!-- Phone field -->
-			              <div class="mb-3">
-			                <label
-			                  for="phone"
-			                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-			                  >Contact Number</label
-			                >
-			                <input
-			                  type="text"
-			                  id="phone"
-			                  th:value="${userForm.phoneNumber}"
-			                  th:field="*{phoneNumber}"
-			                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-			                  placeholder="Enter mobile number"
-			                  required
-			                />
-			                <p
-			                  data-th-if="${#fields.hasErrors('phoneNumber')}"
-			                  data-th-errors="*{phoneNumber}"
-			                  class="text-red-600 px-1 py-2"			                  
-			                >
-			                </p>
-			              </div>
-						
-						<!-- About text-area -->
-			              <div class="mb-3">
-			                <label
-			                  for="about"
-			                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-			                  >Write something about yourself</label
-			                >
-			                <textarea
-			                  id="about"
-			                  th:value="${userForm.about}"
-			                  th:field="*{about}"
-			                  rows="3"
-			                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-			                  placeholder="Write here..."
-			                ></textarea>
-			                <p
-			                  data-th-if="${#fields.hasErrors('about')}"
-			                  data-th-errors="*{about}"
-			                  class="text-red-600 px-1 py-2"
-			                >
-			                </p>
-			              </div>
-			              
-			              <!-- button -->
-			              <div class="mb-3 flex justify-center space-x-3">
-			                <button
-			                  type="submit"
-			                  class="px-3 py-2 rounded bg-blue-600 hover:bg-blue-600 text-white dark:bg-blue-800 dark:hover:bg-blue-600"
-			                >
-			                  SignUp
-			                </button>
-			                <button
-			                  type="reset"
-			                  class="px-3 py-2 rounded bg-orange-700 hover:bg-orange-800 text-white dark:bg-orange-800 dark:hover:bg-orange-600"
-			                >
-			                  Reset
-			                </button>
-			              </div>
-						
-					</form>
-					
-				</div>
-			</div>
-		</div>
-	</div>
+<div id="content" class="bg-gray-50 dark:bg-gray-900 min-h-screen">
 
+    <!-- HERO BACKDROP -->
+    <section class="relative pt-24 pb-16 overflow-hidden">
 
+        <!-- Gradient Background -->
+        <div class="absolute inset-0 -z-10 bg-gradient-to-br
+                    from-indigo-600 via-purple-600 to-pink-500
+                    opacity-15 dark:opacity-25"></div>
 
-	<script>
-		console.log("SignUp page script..")
-	</script>
+        <div class="max-w-xl mx-auto px-6">
+
+            <!-- Signup Card -->
+            <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 md:p-10">
+
+                <!-- Message Box -->
+                <div data-th-replace="~{message::messagebox}"></div>
+
+                <!-- Header -->
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white">
+                        Create Your Account 🚀
+                    </h1>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">
+                        Start managing your contacts securely in the cloud
+                    </p>
+                </div>
+
+                <!-- Signup Form -->
+                <form data-th-action="@{'/do-signup'}"
+                      method="post"
+                      data-th-object="${userForm}"
+                      novalidate
+                      class="space-y-6">
+
+                    <!-- Name -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-200">
+                            Full Name
+                        </label>
+                        <input type="text"
+                               th:field="*{name}"
+                               placeholder="Enter your name"
+                               class="w-full rounded-xl border px-4 py-3 text-sm
+                                      bg-gray-50 dark:bg-gray-700 dark:border-gray-600
+                                      focus:ring-indigo-500 focus:border-indigo-500">
+                        <p th:if="${#fields.hasErrors('name')}"
+                           th:errors="*{name}"
+                           class="text-red-500 text-sm mt-1"></p>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-200">
+                            Email Address
+                        </label>
+                        <input type="email"
+                               th:field="*{email}"
+                               placeholder="Enter your email"
+                               class="w-full rounded-xl border px-4 py-3 text-sm
+                                      bg-gray-50 dark:bg-gray-700 dark:border-gray-600
+                                      focus:ring-indigo-500 focus:border-indigo-500">
+                        <p th:if="${#fields.hasErrors('email')}"
+                           th:errors="*{email}"
+                           class="text-red-500 text-sm mt-1"></p>
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-200">
+                            Password
+                        </label>
+                        <input type="password"
+                               th:field="*{password}"
+                               placeholder="Create a strong password"
+                               class="w-full rounded-xl border px-4 py-3 text-sm
+                                      bg-gray-50 dark:bg-gray-700 dark:border-gray-600
+                                      focus:ring-indigo-500 focus:border-indigo-500">
+                        <p th:if="${#fields.hasErrors('password')}"
+                           th:errors="*{password}"
+                           class="text-red-500 text-sm mt-1"></p>
+                    </div>
+
+                    <!-- Phone -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-200">
+                            Contact Number
+                        </label>
+                        <input type="text"
+                               th:field="*{phoneNumber}"
+                               placeholder="Enter you mobile number"
+                               class="w-full rounded-xl border px-4 py-3 text-sm
+                                      bg-gray-50 dark:bg-gray-700 dark:border-gray-600
+                                      focus:ring-indigo-500 focus:border-indigo-500">
+                        <p th:if="${#fields.hasErrors('phoneNumber')}"
+                           th:errors="*{phoneNumber}"
+                           class="text-red-500 text-sm mt-1"></p>
+                    </div>
+
+                    <!-- About -->
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-200">
+                            About You
+                        </label>
+                        <textarea rows="3"
+                                  th:field="*{about}"
+                                  placeholder="Tell us something about yourself"
+                                  class="w-full rounded-xl border px-4 py-3 text-sm
+                                         bg-gray-50 dark:bg-gray-700 dark:border-gray-600
+                                         focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                        <p th:if="${#fields.hasErrors('about')}"
+                           th:errors="*{about}"
+                           class="text-red-500 text-sm mt-1"></p>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex gap-4 pt-4">
+                        <button type="submit"
+                                class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700
+                                       text-white font-semibold shadow transition">
+                            Create Account
+                        </button>
+
+                        <button type="reset"
+                                class="w-full py-3 rounded-xl bg-gray-200 hover:bg-gray-300
+                                       dark:bg-gray-700 dark:hover:bg-gray-600
+                                       text-gray-900 dark:text-white font-semibold shadow transition">
+                            Reset
+                        </button>
+                    </div>
+
+                </form>
+
+                <!-- Footer -->
+                <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-8">
+                    Already have an account?
+                    <a data-th-href="@{'/login'}"
+                       class="text-indigo-600 hover:underline font-medium">
+                        Login here
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script>
+    console.log("Signup page loaded");
+</script>
 
 </body>
 </html>
