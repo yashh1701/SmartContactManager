@@ -1,14 +1,18 @@
 package com.scm.helpers;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.stereotype.Component;
 
-
+@Component
 public class Helper {
 
+	 @Value("${server.baseUrl}")
+	    private String baseUrl;
+	
 	
 	public static String getEmailOfLoggedInUser(Authentication authentication) {
 		
@@ -33,7 +37,8 @@ public class Helper {
 					
 			}
 			return username;   
-		}else {
+		}
+		else {
 			System.out.println("Getting email from local database!");  //Sign-in from (other)
 			return authentication.getName();	
 		}
@@ -41,9 +46,10 @@ public class Helper {
 	}
 
 
-	public static String getLinkForEmailVerificatiton(String emailToken) {
+	public String getLinkForEmailVerificatiton(String emailToken) {
 
-        return "http://localhost:8080/auth/verify-email?token=" + emailToken;
+		return this.baseUrl + "/auth/verify-email?token=" + emailToken;              // prod
+//        return "http://localhost:8080/auth/verify-email?token=" + emailToken;  // local
 
     }
 	

@@ -25,37 +25,38 @@ public class AuthController {
     @GetMapping("/verify-email")
     public String verifyEmail(@RequestParam("token") String token, HttpSession session) {
 
-    	System.out.println("Verify emial uyasio");
         User user = userRepo.findByEmailToken(token).orElse(null);
 
-        if (user != null) {
-        	
-            // user fetch hua hai :: process karna hai
-            if (user.getEmailToken().equals(token)) {
-                user.setEmailVerified(true);
-                user.setEnabled(true);
-                userRepo.save(user);
-                session.setAttribute("message", Message.builder()
-                        .type(MessageType.green)
-                        .content("You email is verified. Now you can login  ")
-                        .build());
-                return "success_page";
-            }
-
+        if (user == null) {
             session.setAttribute("message", Message.builder()
                     .type(MessageType.red)
-                    .content("Email not verified ! Token is not associated with user .")
+                    .content("Invalid or expired verification link.")
                     .build());
-            return "error_page";
 
+            return "redirect:/login";
         }
 
+        if (!token.equals(user.getEmailToken())) {
+            session.setAttribute("message", Message.builder()
+                    .type(MessageType.red)
+                    .content("Invalid verification token.")
+                    .build());
+
+            return "redirect:/login";
+        }
+
+        // ✅ success
+        user.setEmailVerified(true);
+        user.setEnabled(true);
+        user.setEmailToken(null);  // IMPORTANT: one-time use
+        userRepo.save(user);
+
         session.setAttribute("message", Message.builder()
-                .type(MessageType.red)
-                .content("Email not verified ! Token is not associated with user .")
+                .type(MessageType.green)
+                .content("Email verified successfully. Please login.")
                 .build());
 
-        return "error_page";
+        return "redirect:/login";
     }
 
 }

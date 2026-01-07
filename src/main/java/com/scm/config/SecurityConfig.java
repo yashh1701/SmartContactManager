@@ -86,10 +86,24 @@ public class SecurityConfig {
 
 	        // configuration
 	        // urls configure kiye hai ki koun se public rangenge aur koun se private
+		
 	        httpSecurity.authorizeHttpRequests(authorize -> {
-	            // authorize.requestMatchers("/home", "/signup", "/services").permitAll();  // these url's have access
-	             authorize.requestMatchers("/user/**").authenticated();   // these url's are protected 
-	             authorize.anyRequest().permitAll();
+	            // ---- PUBLIC ENDPOINTS (CRITICAL FOR EB) ----
+	            authorize.requestMatchers(
+	                    "/health",
+	                    "/error",
+	                    "/login",
+	                    "/signup",
+	                    "/css/**",
+	                    "/js/**",
+	                    "/images/**"
+	            ).permitAll();
+
+	            // ---- PROTECTED ENDPOINTS ----
+	            authorize.requestMatchers("/user/**").authenticated();
+
+	            // ---- EVERYTHING ELSE ----
+	            authorize.anyRequest().permitAll();
 	        });
 	        
 	        // form default login 

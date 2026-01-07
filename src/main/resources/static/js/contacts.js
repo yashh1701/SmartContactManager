@@ -1,12 +1,12 @@
 console.log("Contacts.js");
-const baseURL = "http://localhost:8080";
-//const baseURL = "https://www.scm20.site";
+//const baseURL = "http://localhost:8080";
+const baseURL = "https://scmweb.site";
 const viewContactModal = document.getElementById("view_contact_modal");
 
 // options with default values
 const options = {
   placement: "bottom-right",
-  backdrop: "dynamic",
+  backdrop: "dynamic",	
   backdropClasses: "bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40",
   closable: true,
   onHide: () => {
@@ -22,7 +22,7 @@ const options = {
 
 // instance options object
 const instanceOptions = {
-  id: "view_contact_mdoal",
+  id: "view_contact_modal",
   override: true,
 };
 

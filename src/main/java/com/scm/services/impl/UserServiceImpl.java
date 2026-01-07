@@ -10,12 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.scm.entities.Providers;
 import com.scm.entities.User;
 import com.scm.helpers.AppConstants;
 import com.scm.helpers.Helper;
 import com.scm.helpers.ResourceNotFoundException;
-import com.scm.repositories.EmailService;
 import com.scm.repositories.UserRepo;
+import com.scm.services.EmailService;
 import com.scm.services.UserService;
 
 @Service
@@ -28,31 +29,33 @@ public class UserServiceImpl implements UserService {
 	@Autowired
     private EmailService emailService;
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	@Autowired
+	private Helper helper;
 	
 	
 	@Override
 	public User saveUser(User user) {
-		// user id have to generate
-        String userId = UUID.randomUUID().toString();  // generate long id
+
+	    if (userRepo.findByEmail(user.getEmail()).isPresent()) {
+	        throw new IllegalStateException("Email already registered");
+	    }
+
+	    // user id : have to generate
+        String userId = UUID.randomUUID().toString();
         user.setUserId(userId);
-        
         // password encode
-        // user.setPassword(userId);
-        // user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        
-        //set the user role
+        user.setPassword(passwordEncoder.encode(user.getPassword()));        
         user.setRoleList(List.of(AppConstants.ROLE_USER));
-        
-        logger.info(user.getProvider().toString());
-        //For sharing Email verification link
+        user.setProvider(Providers.SELF);
         String emailToken = UUID.randomUUID().toString();
         user.setEmailToken(emailToken);
         User savedUser = userRepo.save(user);
-        String emailLink = Helper.getLinkForEmailVerificatiton(emailToken);
-        emailService.sendEmail(savedUser.getEmail(), "Verify Account : Smart  Contact Manager", emailLink);
+        String emailLink = helper.getLinkForEmailVerificatiton(emailToken);
+        emailService.sendEmail(savedUser.getEmail(),"Verify Your Email",emailLink);
+        
         return savedUser;
 	}
+
 
 	@Override
 	public Optional<User> getUserById(String id) {

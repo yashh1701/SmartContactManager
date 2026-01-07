@@ -1,4 +1,4 @@
-package com.scm.repositories;
+package com.scm.services;
 
 import org.springframework.stereotype.Component;
 

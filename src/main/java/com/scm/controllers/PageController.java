@@ -90,42 +90,45 @@ public class PageController {
 	// Processing signUp (registration)
 	@PostMapping("/do-signup")
 	public String  processSignup(@Valid @ModelAttribute UserForm userForm, BindingResult bindingResult, HttpSession session) {
-			System.out.println("Processing SignUp");
 			
-			// fetch form data
+		    System.out.println("Processing SignUp");
 			System.out.println(userForm);
 			
+			// fetch form data
 			// validate form data (video -14) (@valid, @BindingResult)
 			// error hai to return to signup page else do the remaining task
 			// all these error are displayed on front end (signup.html) 
 			if(bindingResult.hasErrors()) {
 				return "signup";
 			}
-		
         
-		
-			// save data to database
-			// Sending Data from UserForm -> User(object)		
-			User user = new User();
-	        user.setName(userForm.getName()); 
-	        user.setEmail(userForm.getEmail());
-	        user.setPassword(userForm.getPassword());
-	        user.setAbout(userForm.getAbout());
-	        user.setPhoneNumber(userForm.getPhoneNumber());
-	        user.setEnabled(false);
-	        user.setProfilePic(null);
-	        User savedUser = userService.saveUser(user);
-	        System.out.println("User saved...");
-			
-	        
-			// message registration successful
-	        // add the message:
-	        Message message = Message.builder().content("Registration Successful").type(MessageType.blue).build(); // message ek hi baar dikhe (alert mein)
-	        session.setAttribute("message", message);
-	        
-	        
-			// redirect to login page
-			return "redirect:/signup";  // redirecting it to signUp page (i.e to above route)
+			try{
+					// save data to database
+					// Sending Data from UserForm -> User(object)		
+					User user = new User();
+			        user.setName(userForm.getName()); 
+			        user.setEmail(userForm.getEmail());
+			        user.setPassword(userForm.getPassword());
+			        user.setAbout(userForm.getAbout());
+			        user.setPhoneNumber(userForm.getPhoneNumber());
+			        user.setEnabled(false);
+			        user.setProfilePic(null);
+			        User savedUser = userService.saveUser(user);
+			        System.out.println("User saved to database");
+					
+			        
+					//  add the message: registration successful			        
+			        Message message = Message.builder().content("Registration successful. Check your email to verify your account.").type(MessageType.blue).build(); // message ek hi baar dikhe (alert mein)
+			        session.setAttribute("message", message);			        
+					return "redirect:/login";  // redirect to login page
+			}
+			catch (IllegalStateException ex) {
+
+		        Message message = Message.builder().content(ex.getMessage()).type(MessageType.red).build();
+
+		        session.setAttribute("message", message);
+		        return "redirect:/signup";  // redirecting it to signUp page (i.e to above route)
+		    }
 	}
 	
 }
